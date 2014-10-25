@@ -11,17 +11,16 @@ server.listen(port, function (req,res) {
 });
 
 // Routing
+app.engine('html',require('ejs').renderFile);
 var router = express.Router();
 
 router.get('/',function(req,res){
-  res.send('home page');
-  console.log('getting /public');
+  res.render(__dirname+'/public/index.html');
 });
-router.post('/upload',function(req,res){
+router.post('/',function(req,res){
   console.log(req.body);
 });
 
-app.use(express.static(__dirname+'/public'));
 app.use(router);
 
 // Database

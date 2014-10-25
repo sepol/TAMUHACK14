@@ -16,6 +16,11 @@ $(function() {
   var $loginPage = $('.login.page'); // The login page
   var $chatPage = $('.chat.page'); // The chatroom page
 
+  $("#new_event").onclick(function() {
+    $("#new_event").hide();
+    $("#event_details_pane").show();
+  });
+
   // Prompt for setting a username
   var username;
   var connected = false;
