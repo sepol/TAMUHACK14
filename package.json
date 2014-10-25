@@ -7,8 +7,11 @@
   "private": true,
   "license": "BSD",
   "dependencies": {
-    "express": "^3.4.8",
+    "express": "^4.1.1",
     "http": "0.0.0",
-    "socket.io": "^1.1.0"
+    "mysql": "^2.5.2",
+    "querystring": "^0.2.0",
+    "socket.io": "^1.1.0",
+    "util": "^0.10.3"
   }
 }

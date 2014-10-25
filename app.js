@@ -3,14 +3,44 @@ var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
+var mysql = require('mysql');
 var port = process.env.PORT || 3000;
 
-server.listen(port, function () {
+server.listen(port, function (req,res) {
   console.log('Server listening at port %d', port);
 });
 
 // Routing
-app.use(express.static(__dirname + '/public'));
+var router = express.Router();
+
+router.get('/',function(req,res){
+  res.send('home page');
+  console.log('getting /public');
+});
+router.post('/upload',function(req,res){
+  console.log(req.body);
+});
+
+app.use(express.static(__dirname+'/public'));
+app.use(router);
+
+// Database
+var conn = mysql.createConnection({
+  host: 'localhost',
+  port: '3306',
+  user: 'root',
+  password: 'admin',
+  database: 'hacktalk'
+});
+
+conn.connect(function(err) {
+  if (err) {
+    console.log('Unable to connect to database with error: %s', err);
+  }
+  else {
+    console.log('Connected to database');
+  }
+});
 
 // Chatroom
 
