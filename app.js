@@ -20,10 +20,10 @@ router.get('/',function(req,res){
 router.post('/',function(req,res){
   console.log(req.body);
 });
-
+i
 
 app.use(router);
-app.use(express.static(path.join(__dirname, 'public'))); //  "public" off of current is root
+
 
 // Database
 var conn = mysql.createConnection({
